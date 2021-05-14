@@ -3,7 +3,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import {
   BrowserRouter as Router,
@@ -83,7 +82,11 @@ function AdminMenu() {
         <StyledMenuItem>
         <Link to="/user"><ListItemText primary="users" /></Link>
         </StyledMenuItem>
-
+        
+        <StyledMenuItem>
+        <Link to="/logout">Logout</Link>
+        </StyledMenuItem>
+        
       </StyledMenu>
     </div>
   );

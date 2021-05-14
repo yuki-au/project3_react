@@ -4,12 +4,15 @@ import './App.css';
 import Dashboard from './routes/dashboard';
 import Product from './routes/product';
 import User from './routes/user';
+import Logout from './routes/logout';
+
 
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
+
 
 function App () {
 
@@ -22,6 +25,7 @@ function App () {
             <Route exact path="/dashboard" component ={Dashboard}/>
             <Route exact path="/product" component ={Product}/>
             <Route exact path="/user" component ={User}/>
+            <Route exact path="/logout" component ={Logout}/>
           </Switch>
         </div>
     </Router>

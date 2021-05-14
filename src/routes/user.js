@@ -8,6 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import AdminMenu from '../components/adminMenu';
+import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
   table: {
@@ -49,14 +51,43 @@ const useStyles = makeStyles({
          
           }
         });
+      }
+
+// *********delete row part starts***********
+  let hist = useHistory();
+
+  function deleteRow(uid) {
+
+    var fd = new FormData();
+    fd.append('userID', JSON.stringify(uid));
     
-  
+    fetch('http://localhost/match/admin/admin-api.php?action=deleteUser', {
+            mode:'cors',
+            method: "POST",
+            referrerPolicy: 'no-referrer',
+            body:fd
+            })
+            .then((response) => {
+              
+              if (response.status === 400) {
+                alert("Fail to delete");
+                return
+                
+              } else if (response.status === 200) {
+                console.log("successful");
+                window.location.reload(hist.push("/user"));
+              }
+            });
   }
 
+  // *********delete row part ends***********
+    
+  
     return (
       <>
       <AdminMenu />
       <TableContainer component={Paper}>
+      <h2>Users panel</h2>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -71,6 +102,9 @@ const useStyles = makeStyles({
                 <TableCell align="center">{item.userID}</TableCell>
                 <TableCell align="center">{item.username}</TableCell>
                 <TableCell align="center">{item.password}</TableCell>
+                <TableCell id="delete" allign="right">
+                  <Button id ="deletebutton" onClick={() => deleteRow(item.userID)}>Delete</Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

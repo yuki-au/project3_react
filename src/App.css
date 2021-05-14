@@ -39,11 +39,25 @@ button .line{
   text-align: left;
 }
 
+#delete{
+  width: 80px;
+  text-align: right;
+}
+
 #navadmin{
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  background-color:#e8e6e6;
+  background-color:#f2c9cb;
+}
+
+#deletebutton{
+  background-color: #8a8a8a;
+  color: white;
+}
+
+#deletebutton:hover{
+  opacity: .9;
 }
 
 #icon{
@@ -89,6 +103,11 @@ button .line{
   margin: 0 auto;
 }
 
+.MuiTableContainer-root {
+  width: 100%;
+  margin: 50px 0 0 0;
+  border: 1px solid lightgray;
+}
    
 @media screen and (max-width: 480px) {
 
@@ -96,10 +115,12 @@ button .line{
         width:100%;
         margin: "0 auto";
         margin-top: 150;
+ 
     }
 
     table{
       width:50%;
+      padding-top: 200px;
     }
    
     #ad_loginform{

@@ -1,9 +1,23 @@
 
 import { useHistory } from 'react-router-dom';
+import { useFormik, validateYupSchema } from "formik";
+import { Formik } from "formik";
+
 
 
 
 function Adminlogin(){
+
+  const {
+    values
+    // touched,
+    // errors,
+    // handleChange,
+    // handleBlur,
+    // handleSubmit,
+  } = props;
+
+
   let hist = useHistory();
 
   const loginSubmit = (event) => {
@@ -23,8 +37,8 @@ function Adminlogin(){
            
               
               if (response.status === 400) {
-                alert("error");
-                hist.push("/adminlogin");
+                alert("Invalid admin information");
+                window.location.reload();
       
               } else if (response.status === 200) {
                 console.log("successful");
@@ -33,17 +47,22 @@ function Adminlogin(){
             });
   }
 
+
+//  ************ Form validation ********************
+
+
+
+//  ************ Form validation ********************
   return (
               <form id="ad_loginform" onSubmit={loginSubmit}>
                 <h3>Login for admin Match</h3>
-                <label htmlFor="ad_user">Admin user</label>
-                  <input id="ad_user" type="text" name="name" />
-                 <label htmlFor="ad_pass">Password</label>
-                 <input id="ad_pass" type="password" name="pass" />
+                <label htmlFor="name">Admin user</label>
+                  <input id="name" type="text" name="name" value={values.name} onChange={this.handleChange}/>
+                 <label htmlFor="pass">Password</label>
+                 <input id="pass" type="password" name="pass" value={this.props.pass} onChange={this.handleChange}/>
                  <input id="ad_loginButton" type="submit" value="Submit" />
               </form>
-
-            );
-}
+      );
+};
  
 export default Adminlogin

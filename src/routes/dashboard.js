@@ -1,5 +1,6 @@
 import AdminMenu from '../components/adminMenu';
 
+
 function Dashboard() {
     return (
         <>
