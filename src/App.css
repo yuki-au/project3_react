@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -5,12 +6,6 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -28,6 +23,43 @@
   color: #61dafb;
 }
 
+.dash_menu{
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+button .line{
+  width: 35px;
+  height: 5px;
+  margin: 6px 0;
+}
+
+#title {
+  text-align: left;
+}
+
+#navadmin{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  background-color:#e8e6e6;
+}
+
+#icon{
+  width: 72px;
+  height: 72px;
+  background-image: url("img/icon72.png");
+}
+
+.MuiButton-containedPrimary {
+  color: #fff;
+  display: flex;
+  background-color: none!important;
+  box-shadow: none;
+  height: 80px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,3 +68,63 @@
     transform: rotate(360deg);
   }
 }
+
+#ad_loginform{
+  padding: 100px;
+  width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#ad_loginform input{
+  height: 28px;
+  width: 200px;
+  border-radius: 3px;
+  margin: 10px auto;
+}
+
+#ad_loginButton{
+  width: 100px;
+  margin: 0 auto;
+}
+
+   
+@media screen and (max-width: 480px) {
+
+    .tables {
+        width:100%;
+        margin: "0 auto";
+        margin-top: 150;
+    }
+
+    table{
+      width:50%;
+    }
+   
+    #ad_loginform{
+      padding: 100px;
+      width: 300px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #ad_loginform input{
+      height: 28px;
+      width: 200px;
+      border-radius: 3px;
+      margin: 10px auto;
+    }
+
+    
+    .App {
+      text-align: center;
+      width: 100%;
+    }
+
+    th{
+      width: 20%;
+    }
+
+  }
