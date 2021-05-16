@@ -1,31 +1,56 @@
 
+import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { useFormik, validateYupSchema } from "formik";
-import { Formik } from "formik";
+import { useFormik } from "formik";
 
 
+//  ************ Form validation start ********************
+const validate = values => {
+
+  const errors = {};
+  if (!values.name) {
+    errors.name = 'Required';
+  } else if (values.name.length < 4) {
+    errors.name = 'Must be 4 characters or more';
+  }
+  if (!values.pass) {
+    errors.pass = 'Required';
+  } else if (values.pass.length < 5) {
+    errors.pass = 'Must be 5 characters or more';
+  }
+  
+  if(values.name.length >=4 && values.pass.length >= 5 ){
+    document.getElementById("ad_loginButton").removeAttribute("disabled");
+  }
+
+  return errors;
+};
+
+//  ************ Form validation end ********************
 
 
 function Adminlogin(){
 
-  const {
-    values
-    // touched,
-    // errors,
-    // handleChange,
-    // handleBlur,
-    // handleSubmit,
-  } = props;
-
+ //  ************ Form validation start ********************
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      pass: '',
+    },
+    validate,
+  });
+//  ************ Form validation end ********************
 
   let hist = useHistory();
-
   const loginSubmit = (event) => {
-    
-    event.preventDefault();
-    var adlogin = document.getElementById('ad_loginform'); 
-    var fd = new FormData(adlogin);
-    
+    event.preventDefault()
+
+    const username = document.querySelector('#name');
+    const password = document.querySelector('#pass');
+
+    var fd = new FormData();
+    fd.append('name', JSON.stringify(username.value));
+    fd.append('pass', JSON.stringify(password.value));
     
     fetch('http://localhost/match/admin/admin-api.php?action=adminLogin', {
             mode:'cors',
@@ -37,8 +62,8 @@ function Adminlogin(){
            
               
               if (response.status === 400) {
-                alert("Invalid admin information");
-                window.location.reload();
+                console.log("Invalid admin information");
+                 return
       
               } else if (response.status === 200) {
                 console.log("successful");
@@ -47,20 +72,22 @@ function Adminlogin(){
             });
   }
 
-
-//  ************ Form validation ********************
-
-
-
-//  ************ Form validation ********************
   return (
               <form id="ad_loginform" onSubmit={loginSubmit}>
                 <h3>Login for admin Match</h3>
+
                 <label htmlFor="name">Admin user</label>
-                  <input id="name" type="text" name="name" value={values.name} onChange={this.handleChange}/>
-                 <label htmlFor="pass">Password</label>
-                 <input id="pass" type="password" name="pass" value={this.props.pass} onChange={this.handleChange}/>
-                 <input id="ad_loginButton" type="submit" value="Submit" />
+                {formik.errors.name ? <div class = "errormessage">{formik.errors.name}</div> : null}
+                    <input id="name" type="text" name="name" onChange={formik.handleChange}
+                    value={formik.values.name} />
+                   
+
+                    <label htmlFor="pass">Password</label>
+                    <input id="pass" type="password" name="pass" onChange={formik.handleChange}
+                    value={formik.values.pass} />
+                    {formik.errors.pass ? <div class = "errormessage">{formik.errors.pass}</div> : null}
+
+                 <input id="ad_loginButton" type="submit" value="Submit" disabled/>
               </form>
       );
 };

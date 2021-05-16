@@ -5,7 +5,6 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import {
-  BrowserRouter as Router,
   Link
   } from 'react-router-dom';
 
