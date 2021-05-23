@@ -1,5 +1,5 @@
 
-import React from 'react';
+
 import { useHistory } from 'react-router-dom';
 import { useFormik } from "formik";
 
@@ -52,17 +52,15 @@ function Adminlogin(){
     fd.append('name', JSON.stringify(username.value));
     fd.append('pass', JSON.stringify(password.value));
     
-    fetch('http://localhost/match/admin/admin-api.php?action=adminLogin', {
-            mode:'cors',
+    fetch('https://lit-sea-18183.herokuapp.com/admin/admin-api.php?action=adminLogin', {
             method: "POST",
-            referrerPolicy: 'no-referrer',
             body:fd
             })
             .then((response) => {
            
               
               if (response.status === 400) {
-                console.log("Invalid admin information");
+                alert("Invalid admin information");
                  return
       
               } else if (response.status === 200) {

@@ -32,7 +32,7 @@ const useStyles = makeStyles({
 
     function showUsers(){
      
-      fetch('http://localhost/match/admin/admin-api.php?action=callUser', {
+      fetch('https://lit-sea-18183.herokuapp.com/admin/admin-api.php?action=callUser', {
         mode:'cors',
         method: "GET",
         referrerPolicy: 'no-referrer',
@@ -61,7 +61,7 @@ const useStyles = makeStyles({
     var fd = new FormData();
     fd.append('userID', JSON.stringify(uid));
     
-    fetch('http://localhost/match/admin/admin-api.php?action=deleteUser', {
+    fetch('https://lit-sea-18183.herokuapp.com/admin/admin-api.php?action=deleteUser', {
             mode:'cors',
             method: "POST",
             referrerPolicy: 'no-referrer',

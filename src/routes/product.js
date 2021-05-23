@@ -32,8 +32,7 @@ const useStyles = makeStyles({
 
     function showProduct(){
      
-      fetch('http://localhost/match/admin/admin-api.php?action=callProduct', {
-        mode:'cors',
+      fetch('https://lit-sea-18183.herokuapp.com/admin/admin-api.php?action=callProduct', {
         method: "GET",
         referrerPolicy: 'no-referrer',
         })
@@ -62,8 +61,7 @@ const useStyles = makeStyles({
     var fd = new FormData();
     fd.append('productID', JSON.stringify(id));
     
-    fetch('http://localhost/match/admin/admin-api.php?action=deletePro', {
-            mode:'cors',
+    fetch('https://lit-sea-18183.herokuapp.com/admin/admin-api.php?action=deletePro', {
             method: "POST",
             referrerPolicy: 'no-referrer',
             body:fd

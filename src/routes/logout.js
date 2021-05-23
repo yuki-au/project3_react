@@ -5,8 +5,7 @@ function Logout() {
 
     let hist = useHistory();
 
-    fetch('http://localhost/match/admin/admin-api.php?action=adminlogout', {
-        mode:'cors',
+    fetch('https://lit-sea-18183.herokuapp.com/admin/admin-api.php?action=adminlogout', {
         method: "GET",
         referrerPolicy: 'no-referrer',
         })
